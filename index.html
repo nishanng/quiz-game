@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Quiz Game</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Quiz Game</h1>
+        <form id="user-form">
+            <label for="username">Enter your name:</label>
+            <input type="text" id="username" required>
+            <button type="submit">Start</button>
+        </form>
+        <div id="category-selection" class="hidden">
+            <h2>Select a category:</h2>
+            <select id="categories">
+                <!-- Categories will be populated here -->
+            </select>
+            <button id="start-quiz">Start Quiz</button>
+        </div>
+        <div id="quiz" class="hidden">
+            <div id="question-container">
+                <div id="question" class="question">
+                    <h3 class="question-text"></h3>
+                    <div class="answers">
+                        <!-- Answer options will be displayed here -->
+                    </div>
+                </div>
+            </div>
+            <div id="progress">Question <span id="current-question">1</span> of 10</div>
+            <button id="next-question" class="hidden">Next</button>
+        </div>
+        <div id="results" class="hidden">
+            <h2>Results</h2>
+            <p id="score">Your score: <span>0</span>/10</p>
+            <button id="play-again">Play Again</button>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
