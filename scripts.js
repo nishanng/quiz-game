@@ -1,10 +1,7 @@
-const userForm = document.getElementById('user-form');
-const usernameInput = document.getElementById('username');
 const categorySelection = document.getElementById('category-selection');
-const categoryForm = document.getElementById('category-form');
+const greeting = document.getElementById('greeting');
 const categoriesSelect = document.getElementById('categories');
 const startQuizButton = document.getElementById('start-quiz');
-const greeting = document.getElementById('greeting');
 const quizElement = document.getElementById('quiz');
 const questionContainer = document.getElementById('question-container');
 const questionText = document.querySelector('.question-text');
@@ -20,22 +17,6 @@ let questions = [];
 let currentQuestionIndex = 0;
 let correctAnswers = 0;
 
-userForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    userForm.classList.add('hidden');
-    greeting.textContent = `Hello, ${usernameInput.value}!`;
-    categorySelection.classList.remove('hidden');
-});
-
-categoryForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    categorySelection.classList.add('hidden');
-    fetchQuestions(categoriesSelect.value).then(() => {
-        showNextQuestion();
-        quizElement.classList.remove('hidden');
-    });
-});
-
 // Fetch categories and populate the select element
 fetch('https://opentdb.com/api_category.php')
     .then((response) => response.json())
@@ -47,6 +28,14 @@ fetch('https://opentdb.com/api_category.php')
             categoriesSelect.appendChild(option);
         });
     });
+
+startQuizButton.addEventListener('click', () => {
+    categorySelection.classList.add('hidden');
+    fetchQuestions(categoriesSelect.value).then(() => {
+        showNextQuestion();
+        quizElement.classList.remove('hidden');
+    });
+});
 
 nextQuestionButton.addEventListener('click', () => {
     if (currentQuestionIndex < 4) {
@@ -61,7 +50,7 @@ playAgainButton.addEventListener('click', () => {
     results.classList.add('hidden');
     currentQuestionIndex = 0;
     correctAnswers = 0;
-    userForm.classList.remove('hidden');
+    categorySelection.classList.remove('hidden');
 });
 
 function fetchQuestions(categoryId) {
@@ -115,7 +104,6 @@ function showResults() {
     if (correctAnswers >= 3) {
         scoreElement.textContent = `Well done, you answered ${correctAnswers} questions right!`;
     } else {
-        scoreElement.textContent = `That was a good attempt, you answered ${correctAnswers} questions right. Would you like to try again?`;
+        scoreElement.textContent = `That was a good attempt, you answered ${correctAnswers} questions right.Would you like to try again?`;
     }
-}
-
+    }

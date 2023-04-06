@@ -7,35 +7,36 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="intro">
-        <h1>Test your knowledge 🕵️‍♂️ </h1>
-        <form id="user-form">
-            <label for="username">Enter your name:</label>
-            <input type="text" id="username" required>
-            <button type="submit">Start</button>
-        </form>
-    </div>
-    <div id="category-selection" class="hidden">
-        <form id="category-form">
-            <p>Select a category:</p>
+    <div id="app" class="app">
+        <!-- Greeting -->
+        <div id="greeting" class="greeting">
+            <h2>Hello User, Test your knowledge</h2>
+        </div>
+
+        <!-- Category selection -->
+        <div id="category-selection" class="flex-column">
+            <label for="categories">Select a category:</label>
             <select id="categories"></select>
-            <button id="start-quiz" type="submit">Start Quiz</button>
-        </form>
-    </div>
-    <div id="quiz" class="hidden">
-        <div id="greeting"></div>
-        <div id="question-container">
-            <p class="question-text"></p>
-            <div class="answers"></div>
+            <button id="start-quiz">Start Quiz</button>
         </div>
-        <div id="progress">
-            Question <span id="current-question"></span> of 5
+
+        <!-- Quiz -->
+        <div id="quiz" class="quiz hidden">
+            <div id="question-container" class="question-container">
+                <h3 class="question-text"></h3>
+                <div class="answers"></div>
+            </div>
+            <div id="progress" class="progress">
+                <span id="current-question">1</span>/5
+            </div>
+            <button id="next-question" class="hidden">Next Question</button>
         </div>
-        <button id="next-question" class="hidden">Next Question</button>
-    </div>
-    <div id="results" class="hidden">
-        <p id="score"></p>
-        <button id="play-again">Play Again</button>
+
+        <!-- Results -->
+        <div id="results" class="results hidden">
+            <h2 id="score"></h2>
+            <button id="play-again">Play Again</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
